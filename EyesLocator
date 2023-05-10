@@ -1,0 +1,32 @@
+import cv2 #locates eyes in image
+
+# Load the image
+img = cv2.imread('image.png')
+
+# Define the locations of the eyes and mouth
+left_eye_pos = (200, 200)
+right_eye_pos = (400, 200)
+mouth_pos = (300, 400)
+
+# Define the offset values for the eye and mouth movement
+eye_offset = 50
+mouth_offset = 25
+
+# Draw circles around the eyes and mouth
+cv2.circle(img, left_eye_pos, 50, (0, 0, 255), thickness=2)
+cv2.circle(img, right_eye_pos, 50, (0, 0, 255), thickness=2)
+cv2.circle(img, mouth_pos, 75, (0, 0, 255), thickness=2)
+
+# Move the eyes and mouth by changing their position
+cv2.circle(img, (left_eye_pos[0] - eye_offset, left_eye_pos[1]), 50, (0, 255, 0), thickness=2)
+cv2.circle(img, (right_eye_pos[0] + eye_offset, right_eye_pos[1]), 50, (0, 255, 0), thickness=2)
+cv2.circle(img, (mouth_pos[0], mouth_pos[1] + mouth_offset), 75, (0, 255, 0), thickness=2)
+
+# Display the image
+cv2.imshow('Image', img)
+cv2.waitKey(500)
+
+cv2.imshow('/Users/mikhailsamsonov/Downloads/py/te2.png', img)
+cv2.waitKey(10000)
+
+cv2.destroyAllWindows()
